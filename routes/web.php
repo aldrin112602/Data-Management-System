@@ -10,6 +10,7 @@ use App\Http\Controllers\LocationDataController;
 use App\Http\Controllers\LocationInformationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\EventController;
 
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -27,3 +28,7 @@ Route::resource('reviews', ReviewController::class);
 Route::patch('/reviews/{review}/approve', [ReviewController::class, 'approve'])->name('reviews.approve');
 
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
+
+
+
+Route::resource('events', EventController::class);

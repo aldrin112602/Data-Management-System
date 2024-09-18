@@ -22,8 +22,8 @@
                 <a href="{{ route('officials-data.index') }}" class="block py-2 px-4 hover:bg-gray-700">Officials Data</a>
                 <a href="{{ route('location-data.index') }}" class="block py-2 px-4 hover:bg-gray-700">Location Data</a>
                 <a href="{{ route('location-information.index') }}" class="block py-2 px-4 hover:bg-gray-700">Location Information</a>
-                <!-- Add the reviews route link -->
                 <a href="{{ route('reviews.index') }}" class="block py-2 px-4 hover:bg-gray-700">Manage Reviews</a>
+                <a href="{{ route('events.index') }}" class="block py-2 px-4 hover:bg-gray-700">Manage Events</a>
             </nav>
         </aside>
 
