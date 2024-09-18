@@ -8,6 +8,9 @@ use App\Http\Controllers\MunicipalDataController;
 use App\Http\Controllers\OfficialsDataController;
 use App\Http\Controllers\LocationDataController;
 use App\Http\Controllers\LocationInformationController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\NotificationController;
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('system-data', SystemDataController::class);
@@ -19,3 +22,8 @@ Route::resource('location-information', LocationInformationController::class);
 
 
 Route::get('/getMunicipalities/{province_id}', [App\Http\Controllers\OfficialsDataController::class, 'getMunicipalities']);
+
+Route::resource('reviews', ReviewController::class);
+Route::patch('/reviews/{review}/approve', [ReviewController::class, 'approve'])->name('reviews.approve');
+
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
