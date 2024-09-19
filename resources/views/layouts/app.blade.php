@@ -24,6 +24,7 @@
                 <a href="{{ route('location-information.index') }}" class="block py-2 px-4 hover:bg-gray-700">Location Information</a>
                 <a href="{{ route('reviews.index') }}" class="block py-2 px-4 hover:bg-gray-700">Manage Reviews</a>
                 <a href="{{ route('events.index') }}" class="block py-2 px-4 hover:bg-gray-700">Manage Events</a>
+                <a href="{{ route('pinned-locations.index') }}" class="block py-2 px-4 hover:bg-gray-700">Manage Pinned Location</a>
             </nav>
         </aside>
 

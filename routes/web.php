@@ -11,7 +11,7 @@ use App\Http\Controllers\LocationInformationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\PinnedLocationController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('system-data', SystemDataController::class);
@@ -29,6 +29,8 @@ Route::patch('/reviews/{review}/approve', [ReviewController::class, 'approve'])-
 
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
 
-
-
 Route::resource('events', EventController::class);
+
+Route::resource('pinned-locations', PinnedLocationController::class);
+Route::post('pinned-locations/{id}/approve', [PinnedLocationController::class, 'approve'])->name('pinned-locations.approve');
+Route::delete('pinned-locations/{id}', [PinnedLocationController::class, 'destroy'])->name('pinned-locations.destroy');
