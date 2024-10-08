@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PinnedLocation;
 use App\Models\notification;
+use Illuminate\Support\Facades\Auth;
 
 class PinnedLocationController extends Controller
 {
@@ -55,5 +56,31 @@ class PinnedLocationController extends Controller
         }
 
         return redirect()->back()->with('error', 'Pinned location not found.');
+    }
+
+    public function pinLocationForm()
+    {
+        return view('user.pin-location');
+    }
+
+    public function storePinnedLocation(Request $request)
+    {
+        $request->validate([
+            'location_name' => 'required',
+            'description' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        PinnedLocation::create([
+            'user_id' => Auth()->id,
+            'location_name' => $request->location_name,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'status' => 'pending', // Needs admin approval
+        ]);
+
+        return redirect()->route('user.dashboard');
     }
 }

@@ -20,6 +20,7 @@
                     <th class="px-6 py-3 border-b">User Name</th>
                     <th class="px-6 py-3 border-b">Review Description</th>
                     <th class="px-6 py-3 border-b">Media</th>
+                    <th class="px-6 py-3 border-b">Status</th>
                     <th class="px-6 py-3 border-b">Date</th>
                     <th class="px-6 py-3 border-b">Action</th>
                 </tr>
@@ -27,15 +28,16 @@
             <tbody>
                 @foreach($reviews as $review)
                     <tr>
-                        <td class="px-6 py-4 border-b">{{ $review->user->name ?? '' }}</td>
-                        <td class="px-6 py-4 border-b">{{ $review->description }}</td>
+                        <td class="px-6 py-4 border-b">{{ $review->user_name ?? '' }}</td>
+                        <td class="px-6 py-4 border-b">{{ $review->review_text }}</td>
                         <td class="px-6 py-4 border-b">
-                            @if($review->media)
-                                <img src="{{ asset($review->media) }}" alt="Media" class="w-16 h-16">
+                            @if($review->media_file)
+                                <img src="{{ asset('/storage/' . $review->media_file) }}" alt="Media" class="w-16 h-16">
                             @else
                                 No Media
                             @endif
                         </td>
+                        <td class="px-6 py-4 border-b">{{ $review->status }}</td>
                         <td class="px-6 py-4 border-b">{{ $review->created_at->format('Y-m-d') }}</td>
                         <td class="px-6 py-4 border-b">
                             @if($review->status == 'pending')

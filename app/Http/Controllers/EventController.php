@@ -15,6 +15,14 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
+
+    public function userEvents(Request $request)
+    {
+        $sortDirection = $request->query('sort', 'desc'); 
+        $events = Event::orderBy('created_at', $sortDirection)->paginate(10);
+        return view('user.events.index', compact('events'));
+    }
+
     public function create()
     {
         return view('events.create');

@@ -8,15 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'location_id', 'description', 'image_url', 'status'];
+    protected $fillable = [
+        'review_text', 
+        'rating', 
+        'user_name', 
+        'address',
+        'gender',
+        'age',
+        'status_type',
+        'location_id', 
+        'user_unique_id',
+        'media_file'
+    ];
+    
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function location()
-    {
-        return $this->belongsTo(LocationInformation::class);
-    }
 }
